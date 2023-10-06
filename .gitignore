@@ -1,0 +1,12 @@
+# VS Code
+.vscode/
+
+# Misc
+.DS_Store
+
+# Python
+__pycache__/
+
+# Yarn
+node_modules/
+.yarn/
