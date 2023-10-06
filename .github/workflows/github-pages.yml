@@ -16,7 +16,7 @@ jobs:
           <html>
             <h1>CA Vote Search</h1>
             <p>Currently under construction.</p>
-          </html>' > _site/releases/index.html
+          </html>' > _site/index.html
 
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v1
