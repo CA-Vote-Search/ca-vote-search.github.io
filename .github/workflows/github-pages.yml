@@ -1,0 +1,36 @@
+name: Deploy to GitHub Pages
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Create _site/index.html
+        run: |
+          mkdir _site
+          echo '<!DOCTYPE html>
+          <html>
+            <h1>CA Vote Search</h1>
+            <p>Currently under construction.</p>
+          </html>' > _site/releases/index.html
+
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v1
+
+  deploy:
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
